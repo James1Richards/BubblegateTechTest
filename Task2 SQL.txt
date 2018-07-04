@@ -1,0 +1,5 @@
+SELECT products.id, products.name, products.price, products.supplier_id 
+FROM products
+INNER JOIN customer_orders ON products.id=customer_orders.product_id
+INNER JOIN customers ON customers.id=customer_orders.customer_id
+WHERE customer_orders.customer_id='(Insert required customer ID)';

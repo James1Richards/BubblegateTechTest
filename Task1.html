@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bubblegate Task 1</title>
+<link rel="stylesheet" type="text/css" href="task1.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+function testing(input){
+	$.ajax({
+		url: "https://api.flickr.com/services/feeds/photos_public.gne?format=json&tags="+input,
+		dataType: "jsonp",
+		jsonpCallback: 'jsonFlickrFeed',
+		success: function (data) {
+			$("#results").replaceWith("<div id='results'></div>");
+			$.each(data.items, function (i, value) {
+				$("#results").append("<div class='col'><img src='"+value.media.m+"'><p>"+value.title+"</p></div>");
+			})
+		}
+	});
+}
+
+$(document).ready(function(){
+	$("#searchbar").submit(function(){
+	var term = $("#search").val();
+	testing(term);
+	scroll(0,0);
+});
+	
+});
+</script>
+</head>
+
+<body>
+<form id="searchbar" onsubmit="return false">
+	<input type="text" name="search" id="search">
+	<input type="submit" value="Search">
+</form>
+<br>
+<div id="results">
+</div>
+</body>
+</html>

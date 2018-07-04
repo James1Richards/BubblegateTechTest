@@ -1,0 +1,31 @@
+.col{
+	float: left;
+	width: 30%;
+	text-align: center;
+}
+#searchbar{
+	text-align: center;
+}
+#results{
+	width: 75%;
+	text-align: center;
+	margin: auto;
+}
+
+@media only screen and (max-width:1000px) {
+  .col {
+    width: 50%;
+  }
+  #results{
+	  width: 90%;
+  }
+}
+@media only screen and (max-width:700px) {
+  .col {
+    width: 100%;
+  }
+  #results{
+	  width: 100%;
+  }
+  
+}
